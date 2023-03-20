@@ -1,0 +1,25 @@
+GET http://localhost:8010/api/products
+
+###
+GET http://localhost:8010/api/product_types
+Accept: application/json
+
+
+###
+GRAPHQL http://localhost:8010/api/graphql
+Content-Type: application/graphql
+
+query {
+  products {
+        name
+        type {
+          id
+          name
+    }
+  }
+
+  productTypes {
+    id
+    name
+  }
+}

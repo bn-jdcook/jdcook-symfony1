@@ -1,0 +1,24 @@
+version: '3.1'
+services:
+    web:
+        build:
+            context: .
+            dockerfile: Dockerfile-web
+        ports:
+            - "8010:80"
+        volumes:
+            - ./config:/code/config
+            - ./migrations:/code/migrations
+            - ./src:/code/src
+            - ./tests:/code/tests
+            - ./.env:/code/.env
+    cli:
+        build: .
+        image: jdcook/symfony1:build1
+    db:
+        image: docker.io/bitnami/mysql:5.7
+        ports:
+            - "3308:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: passwd1
+            MYSQL_DATABASE: test1

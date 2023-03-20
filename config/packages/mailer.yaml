@@ -1,0 +1,5 @@
+framework:
+    mailer:
+        transports:
+            main: '%env(MAILER_DSN)%'
+            ses: 'ses+https://%env(AWS_ACCESS_KEY_ID)%:%env(AWS_SECRET_ACCESS_KEY)%@default?region=%env(AWS_REGION)%'
