@@ -23,3 +23,9 @@ query {
     name
   }
 }
+
+###
+GET http://localhost:8010
+
+###
+GET http://localhost:8010/message/bob22

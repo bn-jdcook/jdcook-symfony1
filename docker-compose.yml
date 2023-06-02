@@ -6,15 +6,24 @@ services:
             dockerfile: Dockerfile-web
         ports:
             - "8010:80"
+        expose:
+            - "9003"
+        environment:
+            XDEBUG_CONFIG: client_host=192.168.68.55
         volumes:
             - ./config:/code/config
             - ./migrations:/code/migrations
             - ./src:/code/src
             - ./tests:/code/tests
             - ./.env:/code/.env
+            - ./docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini:ro
     cli:
         build: .
         image: jdcook/symfony1:build1
+        expose:
+            - "9003"
+        volumes:
+            - ./docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini:ro
     db:
         image: docker.io/bitnami/mysql:5.7
         ports:

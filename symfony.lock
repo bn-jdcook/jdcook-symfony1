@@ -1,4 +1,7 @@
 {
+    "alexandrubau/messenger-azure-queue-transport": {
+        "version": "v1.1.2"
+    },
     "api-platform/core": {
         "version": "3.0",
         "recipe": {
@@ -23,6 +26,9 @@
     },
     "aws/aws-sdk-php": {
         "version": "3.228.0"
+    },
+    "aymdev/messenger-azure-bundle": {
+        "version": "v1.4.0"
     },
     "doctrine/annotations": {
         "version": "2.0",
@@ -150,6 +156,18 @@
     },
     "nikic/php-parser": {
         "version": "v4.15.1"
+    },
+    "nyholm/psr7": {
+        "version": "1.8",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "4a8c0345442dcca1d8a2c65633dcf0285dd5a5a2"
+        },
+        "files": [
+            "config/packages/nyholm_psr7.yaml"
+        ]
     },
     "phar-io/manifest": {
         "version": "2.0.3"
@@ -409,8 +427,32 @@
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
     },
+    "symfony/messenger": {
+        "version": "6.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "6.0",
+            "ref": "ba1ac4e919baba5644d31b57a3284d6ba12d52ee"
+        },
+        "files": [
+            "config/packages/messenger.yaml"
+        ]
+    },
     "symfony/mime": {
         "version": "v5.4.8"
+    },
+    "symfony/monolog-bundle": {
+        "version": "3.8",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "3.7",
+            "ref": "213676c4ec929f046dfde5ea8e97625b81bc0578"
+        },
+        "files": [
+            "config/packages/monolog.yaml"
+        ]
     },
     "symfony/phpunit-bridge": {
         "version": "6.2",

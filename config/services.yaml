@@ -19,6 +19,7 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+        public: true
 
     App\MailPoc\Command\SendGridTemplateCommand:
         arguments:
@@ -36,3 +37,9 @@ services:
             $toEmails: '%env(TO_EMAILS)%'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    _instanceof:
+        App\Message\TestMessage:
+            autowire: false
+        App\Message\Test2Message:
+            autowire: false
