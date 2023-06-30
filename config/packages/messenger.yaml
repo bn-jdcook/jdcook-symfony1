@@ -1,0 +1,36 @@
+framework:
+    messenger:
+        # Uncomment this (and the failed transport below) to send failed messages to this transport for later handling.
+        # failure_transport: failed
+
+        serializer:
+            default_serializer: messenger.transport.symfony_serializer
+            symfony_serializer:
+                format: json
+                context: { }
+
+        transports:
+            # https://symfony.com/doc/current/messenger.html#transport-configuration
+             async: '%env(MESSENGER_TRANSPORT_DSN)%'
+             failed: 'doctrine://default?queue_name=failed'
+             sync: 'sync://'
+             azure_queues:
+                 dsn: '%env(MESSENGER_TRANSPORT_DSN_QUEUE)%'
+                 serializer: messenger.transport.symfony_serializer
+                 options:
+                     queue_name: 'test1'
+                     delay: 10000
+                     # causes the delay to be higher before each retry
+                     # e.g. 1 second delay, 2 seconds, 4 seconds
+                     multiplier: 2
+                     max_delay: 0
+             azure_transport:
+                 dsn: '%env(MESSENGER_TRANSPORT_DSN_BUS)%'
+                 serializer: 'App\Message\AzureServiceBusSerializer'
+                 options:
+                     entity_path: 'test1'
+
+        routing:
+            # Route your messages to the transports
+             'App\Message\TestMessage': azure_queues
+             'App\Message\Test2Message': azure_transport
